@@ -1,7 +1,7 @@
 #' Create formatted scatterplot of a common column from 2 contrasts
 #'
-#' Creates a nicely formatted scatterplot of any common column from any 2 toptable dataframes(defaults to logFC).
-#'  Additionally If p-values or FDR values and a threshold are supplied,
+#' Creates a nicely formatted scatterplot of any common column from any 2 topTable dataframes(defaults to logFC).
+#'  Additionally, if p-values or FDR values and a threshold are supplied,
 #' the plot is color coded to show X unique, Y unique, and
 #' common differentially expressed (DE) genes in different colors.
 #'
@@ -22,7 +22,7 @@
 #'
 #'
 #' @param dgeObj A DGeobj with atleast 2 contrasts
-#' @param contrasts A pair of two contrasts in DGEobj that has logFC column.
+#' @param contrasts The itemNames of a pair of two contrasts in DGEobj that has logFC column.
 #'        Optionally add xp and yp columns to hold p-values or FDR values using colorBySigMeasure.
 #' @param colorBySigMeasure Colors points by significance measures.  (default = TRUE)
 #' @param pvalCol Name of the p-value column (default = "P.Value")
