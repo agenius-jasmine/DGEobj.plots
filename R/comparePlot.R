@@ -42,7 +42,7 @@
 #'   # Retrieve the first two contrasts from a DGEobj as a list of dataframes (length = 2; named items)
 #'   contrasts <- names(DGEobj::getType(dgeObj, "topTable"))[1:2]
 #'   contrastList <- lapply(contrasts, function(x){
-#'      getItems(dgeObj, x)
+#'      DGEobj::getItems(dgeObj, x)
 #'    })
 #'    names(contrastList) <- contrasts
 #'

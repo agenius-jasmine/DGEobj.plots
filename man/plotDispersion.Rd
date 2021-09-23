@@ -26,7 +26,7 @@ plotDispersion(
 \item{plotCategory}{One of "dispersion" or "BCV" (default = "dispersion")}
 
 \item{lineFit}{If the plotType is ggplot, any method supported by `geom_smooth()`. If the plotType is canvasXpress, one of glm, lm, loess, gam is accepted .
-Loess is recommended.(default = NULL)}
+Loess is recommended. (default = NULL)}
 
 \item{...}{Extra parameters to pass to edgeR::estimateDisp}
 }

@@ -11,7 +11,7 @@
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
 #' @param plotCategory One of "dispersion" or "BCV" (default = "dispersion")
 #' @param lineFit If the plotType is ggplot, any method supported by `geom_smooth()`. If the plotType is canvasXpress, one of glm, lm, loess, gam is accepted .
-#' Loess is recommended.(default = NULL)
+#' Loess is recommended. (default = NULL)
 #' @param ... Extra parameters to pass to edgeR::estimateDisp
 #'
 #' @return canvasxpress or ggplot object based on plotType selection
