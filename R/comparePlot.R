@@ -338,10 +338,10 @@ comparePlot <- function(dgeObj,
 #' (present in both datasets). The two dataframes must have the same type of
 #' gene IDs as rownames.
 #'
-#' @param contrastList A named list of 2 topTable dataframes (Required). The
+#' @param contrastList A named list of 2 topTable dataframes (required). The
 #'   names are used as column names for the value columns in the output.
-#' @param valueCol Name of column containing values to plot (Default = "logFC")
-#' @param significanceCol Name of column to use for significance (Default = "P.Value")
+#' @param valueCol Name of column containing values to plot (default = "logFC")
+#' @param significanceCol Name of column to use for significance (default = "P.Value")
 #'
 #' @return A data frame with 2 LogRatio measurements and 2 significance columns.  Columns 1 and 3 map
 #' to sample 1 and columns 2 and 4 map to sample 2.  The returned dataframe is formatted as expected

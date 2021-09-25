@@ -19,7 +19,7 @@
 #' @param colorBy A column name in the design table.Points are colored by the values in that column (default = ReplicateGroup)
 #' @param shapeBy A column name in the design table.Points are shaped by the values in that column (default = ReplicateGroup)
 #' @param sizeBy A column name in the design table.Points are sized by the values in that column (default = ReplicateGroup)
-#' @param top Number of most variant genes to include (Default = Inf)
+#' @param top Number of most variant genes to include (default = Inf)
 #' @param labels A column name in the design table. Text labels for the samples. These should be short
 #'   abbreviations of the sample identifiers.
 #'   Default = ReplicateGroup or rownames of dgeObj. Set to NULL to disable
