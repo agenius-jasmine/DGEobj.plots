@@ -25,6 +25,8 @@ obsPlot(
 )
 }
 \arguments{
+\item{dgeObj}{A DGEObject. The countsMatrix in the DGEObject is extracted to plot the data. (required)}
+
 \item{plotType}{Can be canvasXpress or ggplot (default = canvasXpress)}
 
 \item{countsMatrix}{Name of the counts matrix in the DGEObj which will be used to render the plot.(default = counts)}
@@ -60,8 +62,6 @@ This parameter is passed to DGEobj.utils::convertCounts}
 
 \item{axisFree}{Specify same scale or independent scales for each subplot (default = TRUE;
 Allowed values: TRUE or FALSE)}
-
-\item{data}{A  DGEObject. The countsMatrix in the DGEObject is extracted to plot the data. (required)}
 }
 \value{
 Plot of type canvasXpress or ggplot. If Facet = TRUE (default) returns a faceted object. If

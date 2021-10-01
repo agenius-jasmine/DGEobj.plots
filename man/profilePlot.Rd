@@ -37,8 +37,8 @@ profilePlot(
 
 \item{pthreshold}{the p value threshold used to color points (default = 0.01)}
 
-\item{geneNameCol}{geneName column in geneData from DGEobj. This column will be used to label
-significantly changed points.}
+\item{geneNameCol}{geneName column in geneData from DGEobj. This column will be used to add the gene name
+in the popover for canvasXpress plots only.}
 
 \item{xlab}{X axis label (defaults = "LogIntensity column name")}
 

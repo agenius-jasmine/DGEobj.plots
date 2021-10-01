@@ -11,10 +11,9 @@
 #' Faceting the plot can be turned off to return a list of individual plots for each gene. Input is a DGEobj with a
 #' Counts Matrix. User can also provide input parameters to convert the counts matrix to other desired units.
 #'
-#' @param data A  DGEObject. The countsMatrix in the DGEObject is extracted to plot the data. (required)
+#' @param dgeObj A DGEObject. The countsMatrix in the DGEObject is extracted to plot the data. (required)
 #' @param plotType Can be canvasXpress or ggplot (default = canvasXpress)
-#' @param designTable Name of the design table in the DGEObj from which the grouping column will be extracted. (default = design)
-#' @param countsMatrix Name of the counts matrix in the DGEObj which will be used to render the plot.(default = counts)
+#' @param countsMatrix Name of the counts matrix in the DGEObj which will be used to render the plot. (default = counts)
 #' @param convertCounts A flag to indicate if counts matrix need to be converted or taken as is. Default value is NULL. This indicates
 #'     countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM,FPKM, FPK and TPM.
 #'     This parameter is passed to DGEobj.utils::convertCounts
@@ -23,14 +22,15 @@
 #' @param convert_normalize Parameter to pass to DGEobj.utils::convertCounts. (default = none)
 #' @param convert_prior.count Parameter to pass to DGEobj.utils::convertCounts. (default = NULL)
 #' @seealso \link[DGEobj.utils]{convertCounts}
-#' @param group Define the column name to group boxplots by (typically a replicate group column) (required)
+#' @param designTable Name of the design table in the DGEObj from which the grouping column will be extracted. (default = design)
+#' @param group Define the column name to group boxplots by (typically a replicate group column) (required, default = ReplicateGroup)
 #' @param violinLayer Adds a violin layer (default = FALSE)
-#' @param showPoints Shows the datapoints on the plot (default = TRUE)
-#' @param xlab X axis label (defaults to group column name if not specified)
-#' @param ylab Y axis label (defaults to value column name if not specified)
+#' @param showPoints Shows the data points on the plot (default = TRUE)
+#' @param xlab X axis label (optional, defaults to group column name if not specified)
+#' @param ylab Y axis label (optional, defaults to value column name if not specified)
 #' @param title Plot title (optional)
 #' @param facet Specifies whether to facet (TRUE) or print individual plots
-#'   (FALSE)  (default = TRUE)
+#'   (FALSE) (default = TRUE)
 #' @param axisFree Specify same scale or independent scales for each subplot (default = TRUE;
 #'   Allowed values: TRUE or FALSE)
 #'
