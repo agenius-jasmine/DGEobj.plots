@@ -1,14 +1,14 @@
-#' Plot network of DGEobj relationships
+#' Plot a network of DGEobj relationships
 #'
 #' Reads a DGEobj and produces a node pair file or a graph defining parent/child relationships between
 #' data items in the DGEobj.
 #'
 #' @param dgeObj DGEobj to find the parent/child relationships between data items.
-#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
-#' @param directed Passed to igraph::graph_from_data_frame. Indicates if the graph should
+#' @param plotType Plot type must be canvasXpress or igraph (default = canvasXpress).
+#' @param directed Only for igraph. Indicates if the graph should
 #'     be directed or not. (default = TRUE)
 #'
-#' @return A class igraph network object for plotType ggplot and canvasxpress network plot for plotType canvasxpress.
+#' @return A class igraph network object or a canvasXpress network plot.
 #'
 #'
 #' @examples
@@ -43,8 +43,8 @@ mapDGEobj <- function(dgeObj,
     if (any(is.null(plotType),
             !is.character(plotType),
             length(plotType) != 1,
-            !tolower(plotType) %in% c("canvasxpress", "ggplot"))) {
-        warning("plotType must be either canvasXpress or ggplot. Assigning default value 'CanvasXpress'.")
+            !tolower(plotType) %in% c("canvasxpress", "igraph"))) {
+        warning("plotType must be either canvasXpress or igraph. Assigning default value 'canvasXpress'.")
         plotType <- "canvasxpress"
     }
 
