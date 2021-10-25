@@ -1,34 +1,44 @@
 #' Create deluxe CDF Plots
 #'
 #' CDF plots are a good complement to p-value histograms as a way to evaluate
-#' model performance and examine support for differential expression. On the x-axis,
-#' is the ranked by p-value and on y-axis is the p-value.
+#' model performance and examine support for differential expression. Results
+#' are ranked by p-value on the x-axis and the p-value plotted on the y-axis.
 #' Since p-value distributions should be flat, this type of plot should produce a
-#' straight line. Any observations that fail to meet the null hypothesis will
-#' have a break in the line at the end of the curve.
+#' straight line.  Any observations that fail to meet the null hypothesis will
+#' appear as a break in the line at the low end of the curve.
 #'
 #' This function is designed to take a topTable dataframe and display the
-#' corresponding CDF plots. The first plot (below_pvalMax) are p-values below the pvalMax and the
-#' the second plot (all_pval) shows all the p-values. For plotType ="ggplot", output also
-#' contains an additional plot that displays the all_pval plot as an inset in below_pvalMax.
+#' corresponding CDF plot. Data for the p-values below 0.1 (configurable via
+#' pvalMax argument) are shown in a full size plot. An viewport figure shows the
+#' whole p-value scale. Points below 0.01 are a different color by default
+#' (threshold set by pThreshold argument; shape/color attributes customizable
+#' through other arguments).
+#'
+#' \strong{Data Structure for the input dataframe:}
+#'
+#' The defaults are set for dataframes produced by topTable.  The column
+#' "P.Value" is used by default to accommodate the column names used in topTable
+#' dataframes.  Any other dataframe can be used with by explicitly defining the
+#' p-value column named with the appropriate argument.
 #'
 #' @param dgeObj A DGEobj with one or more topTables (required)
 #' @param contrast Name of a topTable dataframe with p-value or an FDR column (required)
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
 #' @param pvalCol Name of the p-value or FDR column (default = "P.Value")
 #' @param pvalMax Limit the range of the main plot (default = 0.10)
-#' @param pThreshold Significant value threshold (default = 0.01)
+#' @param pThreshold Used to color points (default = 0.01)
 #' @param xlab X axis label (default = "Rank")
 #' @param ylab Y axis label (default = p-value column name)
 #' @param title Plot title (Optional)
-#' @param insetTitle Title for the inset plot (Optional)
+#' @param viewportTitle Title for the inset plot (Optional)
 #' @param referenceLine Color for a horizontal line drawn at the p-threshold
 #'   (default = NULL; NULL disables, set to desired color to enable)
-#' @param insetX x-location for the inset plot (default = 0.15)
-#' @param insetY y-location for the inset plot (default = 0.85)
-#' @param insetWidth width of the inset plot (default = 0.35)
+#' @param viewportX x-location for the inset plot(default = 0.15)
+#' @param viewportY y-location for the inset plot(default = 0.85)
+#' @param viewportWidth width of the inset plot (default = 0.35)
 #'
-#' @return A list of plots.
+#' @return A list containing main plot, inset plot for both plotTypes. For plotType ="ggplot" output list also contains a combined plot which
+#' displays the inset plot in a viewport
 #'
 #' @examples
 #' \dontrun{
@@ -53,11 +63,11 @@ cdfPlot <- function(dgeObj,
                     xlab,
                     ylab,
                     title          = NULL,
-                    insetTitle     = NULL,
+                    viewportTitle     = NULL,
                     referenceLine  = NULL,
-                    insetX         = 0.15,
-                    insetY         = 0.85,
-                    insetWidth     = 0.35,
+                    viewportX      = 0.15,
+                    viewportY      = 0.85,
+                    viewportWidth  = 0.35,
                     pvalMax        = 0.10) {
 
     assertthat::assert_that(!missing(dgeObj),
@@ -108,11 +118,11 @@ cdfPlot <- function(dgeObj,
         title <- NULL
     }
 
-    if (!is.null(insetTitle) &&
-        !all(is.character(insetTitle),
-             length(insetTitle) == 1)) {
-        warning("insetTitle must be a singular value of class character. Assigning default value NULL.")
-        insetTitle <- NULL
+    if (!is.null(viewportTitle) &&
+        !all(is.character(viewportTitle),
+             length(viewportTitle) == 1)) {
+        warning("viewportTitle must be a singular value of class character. Assigning default value NULL.")
+        viewportTitle <- NULL
     }
 
     if (missing(xlab)) {
@@ -148,28 +158,28 @@ cdfPlot <- function(dgeObj,
     }
 
     if ((plotType == 'ggplot') &&
-        (any(is.null(insetX),
-            !is.numeric(insetX),
-            length(insetX) != 1))) {
-        warning("insetX must be a singular value of class numeric and must be greater than 0. Assigning default value 0.15.")
-        insetX <- 0.15
+        (any(is.null(viewportX),
+            !is.numeric(viewportX),
+            length(viewportX) != 1))) {
+        warning("viewportX must be a singular value of class numeric and must be greater than 0. Assigning default value 0.15.")
+        viewportX <- 0.15
     }
 
     if ((plotType == 'ggplot') &&
-        (any(is.null(insetY),
-            !is.numeric(insetY),
-            length(insetY) != 1))) {
-        warning("insetY must be a singular value of class numeric and must be greater than 0. Assigning default value 0.85.")
-        insetY <- 0.85
+        (any(is.null(viewportY),
+            !is.numeric(viewportY),
+            length(viewportY) != 1))) {
+        warning("viewportY must be a singular value of class numeric and must be greater than 0. Assigning default value 0.85.")
+        viewportY <- 0.85
     }
 
     if ((plotType == 'ggplot') &&
-        (any(is.null(insetWidth),
-            !is.numeric(insetWidth),
-            length(insetWidth) != 1,
-            insetWidth < 0))) {
-        warning("insetWidth must be a singular value of class numeric. Assigning default value 0.35.")
-        insetWidth <- 0.35
+        (any(is.null(viewportWidth),
+            !is.numeric(viewportWidth),
+            length(viewportWidth) != 1,
+            viewportWidth < 0))) {
+        warning("viewportWidth must be a singular value of class numeric. Assigning default value 0.35.")
+        viewportWidth <- 0.35
     }
 
     if (any(is.null(pvalMax),
@@ -190,8 +200,8 @@ cdfPlot <- function(dgeObj,
         title = ""
     }
 
-    if (is.null(insetTitle)) {
-        insetTitle = ""
+    if (is.null(viewportTitle)) {
+        viewportTitle = ""
     }
 
     # Combo PLOT: full data inset, most significant data in main plot
@@ -200,7 +210,7 @@ cdfPlot <- function(dgeObj,
         dplyr::arrange(!!rlang::sym(pvalCol))
     contrastDF$Rank <- c(1:nrow(contrastDF))
 
-    # Let's plot the p-value subsets
+    # Let"s plot the p-value subsets
     contrastDF$group <- NA
     contrastDF$order <- NA
     contrastDF <- contrastDF %>%
@@ -211,8 +221,8 @@ cdfPlot <- function(dgeObj,
 
     contrastDF_subset <- contrastDF %>%
         dplyr::filter(!!rlang::sym(pvalCol) <= pvalMax)
-    cdfpvalMax <- NULL
-    cdfAll <- NULL
+    cdfMain <- NULL
+    cdfInset <- NULL
 
     if (plotType == "canvasxpress") {
         symbolSize     = c(20, 18)
@@ -240,7 +250,7 @@ cdfPlot <- function(dgeObj,
         max.value <- max(pThreshold, max(contrastDF_subset[[y]]))
         maxY <- max.value + max.value*0.1
 
-        cdfpvalMax <- canvasXpress::canvasXpress(data              = cx.data.subset,
+        cdfMain <- canvasXpress::canvasXpress(data              = cx.data.subset,
                                               varAnnot          = var.annot.subset,
                                               decorations       = decorations,
                                               graphType         = "Scatter2D",
@@ -257,7 +267,7 @@ cdfPlot <- function(dgeObj,
                                               yAxisTitle        = ylab,
                                               setMaxY           = maxY)
 
-        cdfAll <- canvasXpress::canvasXpress(data              = cx.data,
+        cdfInset <- canvasXpress::canvasXpress(data              = cx.data,
                                                varAnnot          = var.annot,
                                                graphType         = "Scatter2D",
                                                colorBy           = "group",
@@ -268,11 +278,11 @@ cdfPlot <- function(dgeObj,
                                                sizeBy            = "group",
                                                sizes             = symbolSize,
                                                sizeByShowLegend  = FALSE,
-                                               title             = insetTitle,
+                                               title             = viewportTitle,
                                                xAxisTitle        = xlab,
                                                yAxisTitle        = ylab,
                                                setMaxY           = max(contrastDF[[y]]))
-        cdfPlot <- list("below_pvalMax" = cdfpvalMax, "all_pval" = cdfAll)
+        cdfPlot <- list("main" = cdfMain, "inset" = cdfInset)
     } else {
         symbolSize     = c(4, 3)
         names(symbolShape) <- groupNames
@@ -280,7 +290,7 @@ cdfPlot <- function(dgeObj,
         names(symbolColor) <- groupNames
 
         # Plot subset percent of the data for the main plot
-        cdfpvalMax <- ggplot(contrastDF_subset, aes_string(x = x, y = y)) +
+        cdfMain <- ggplot(contrastDF_subset, aes_string(x = x, y = y)) +
             aes(shape = group, size = group, color = group, fill = group) +
             # Scale lines tell it to use the actual values, not treat them as factors
             scale_shape_manual(values = symbolShape) +
@@ -290,13 +300,13 @@ cdfPlot <- function(dgeObj,
         #alpha = transparency
         # Optional Decorations
         if (!is.null(referenceLine)) {
-            cdfpvalMax <- cdfpvalMax +
+            cdfMain <- cdfMain +
                 geom_hline(yintercept = pThreshold, color = referenceLine,alpha = 0.5)
          #   size = refLineThickness,
         }
 
         # Add Labels
-        cdfpvalMax <- cdfpvalMax +
+        cdfMain <- cdfMain +
             xlab(xlab) +
             ylab(ylab) +
             ggtitle(title)
@@ -304,7 +314,7 @@ cdfPlot <- function(dgeObj,
 
 
         # Set up the inset plot with All Data
-        cdfAll <- ggplot(contrastDF, aes_string(x = x, y = y)) +
+        cdfInset <- ggplot(contrastDF, aes_string(x = x, y = y)) +
             aes(shape = group, size = group, color = group, fill = group) +
             # Scale lines tell it to use the actual values, not treat them as factors
             scale_shape_manual(values = symbolShape) +
@@ -317,41 +327,40 @@ cdfPlot <- function(dgeObj,
         #alpha = transparency
 
         #remove the legends for the inset plot
-        cdfAll <- cdfAll + theme(legend.position = "none")
+        cdfInset <- cdfInset + theme(legend.position = "none")
 
         # Add Labels and title
-        cdfAll <- cdfAll +
+        cdfInset <- cdfInset +
             xlab(xlab) +
             ylab(ylab) +
-            ggtitle(insetTitle)
+            ggtitle(viewportTitle)
 
-        #Plot all_pval as an inset of below_pvalMax
-        plot_limits <- get_plot_limits(cdfpvalMax, insetX, insetY, insetWidth)
-        inset_plot <- cdfpvalMax +
-            annotation_custom(grob =  ggplotGrob(cdfAll),
+        plot_limits <- get_plot_limits(cdfMain, viewportX, viewportY, viewportWidth)
+        vp_plot <- cdfMain +
+            annotation_custom(grob =  ggplotGrob(cdfInset),
                                        ymin = plot_limits[["ymin"]],
                                        ymax = plot_limits[["ymax"]],
                                        xmin = plot_limits[["xmin"]],
                                        xmax = plot_limits[["xmax"]])
 
-        cdfPlot <- list(below_pvalMax = cdfpvalMax, all_pval = cdfAll, inset = inset_plot)
+        cdfPlot <- list(main = cdfMain, inset = cdfInset, combined = vp_plot)
     }
 
     cdfPlot
 }
 
-get_plot_limits <- function(main_plot, insetX, insetY, insetWidth) {
+get_plot_limits <- function(main_plot, viewportX, viewportY, viewportWidth) {
     main_plot_build <- ggplot_build(main_plot)
     xrange <- main_plot_build$layout$panel_params[[1]]$x.range
     yrange <- main_plot_build$layout$panel_params[[1]]$y.range
 
     x_range_val <- xrange[[2]] - xrange[[1]]
     xmin <- xrange[[1]] + (0.02 * x_range_val)
-    xmax <- xmin + (insetWidth * x_range_val)
+    xmax <- xmin + (viewportWidth * x_range_val)
 
     y_range_val <- yrange[[2]] - yrange[[1]]
     ymin <- yrange[[2]] - (0.02 * y_range_val)
-    ymax <- ymin - (insetWidth * y_range_val)
+    ymax <- ymin - (viewportWidth * y_range_val)
     list("xmin" = xmin,
          "xmax" = xmax,
          "ymin" = ymin,
