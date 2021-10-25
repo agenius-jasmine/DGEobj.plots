@@ -2,14 +2,14 @@
 % Please edit documentation in R/mapDGEobj.R
 \name{mapDGEobj}
 \alias{mapDGEobj}
-\title{Plot a network of DGEobj relationships}
+\title{Construct DGEobj relationships}
 \usage{
 mapDGEobj(dgeObj, plotType = "canvasXpress", directed = TRUE)
 }
 \arguments{
 \item{dgeObj}{DGEobj to find the parent/child relationships between data items.}
 
-\item{plotType}{Plot type must be canvasXpress or igraph (default = canvasXpress).}
+\item{plotType}{Must be canvasXpress or igraph (default = canvasXpress).}
 
 \item{directed}{Only for igraph. Indicates if the graph should
 be directed or not. (default = TRUE)}
@@ -18,15 +18,15 @@ be directed or not. (default = TRUE)}
 A class igraph network object or a canvasXpress network plot.
 }
 \description{
-Reads a DGEobj and produces a node pair file or a graph defining parent/child relationships between
-data items in the DGEobj.
+Reads a DGEobj and either (1) produces a node pair file ready for plotting or (2) a plot visualizing parent/child relationships between
+data items in a DGEobj.
 }
 \examples{
 \dontrun{
   # Prepare canvasxpress network plot
   mynet <- mapDGEobj(dgeObj)
 
-  # Prepare an iGraph object for plotting
+  # Prepare an igraph object for plotting
   mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
   plot(mynet)
   }

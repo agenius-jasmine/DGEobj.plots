@@ -19,10 +19,10 @@
 #' @param convertCounts A flag to indicate if counts matrix need to be converted or taken as is. Default value is NULL. This indicates
 #'     countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM,FPKM, FPK and TPM.
 #'     This parameter is passed to DGEobj.utils::convertCounts (default = NULL)
-#' @param convert_geneLength Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (optional).
-#' @param convert_log Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = FALSE)
-#' @param convert_normalize Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = none)
-#' @param convert_prior.count Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = NULL)
+#' @param convert_geneLength Parameter to pass to DGEobj.utils::convertCounts. (optional).
+#' @param convert_log Parameter to pass to DGEobj.utils::convertCounts. (default = FALSE)
+#' @param convert_normalize Parameter to pass to DGEobj.utils::convertCounts. (default = none)
+#' @param convert_prior.count Parameter to pass to DGEobj.utils::convertCounts. (default = NULL)
 #' @seealso \link[DGEobj.utils]{convertCounts}
 #' @param group Define the column name to group boxplots by (typically a replicate group column) (required)
 #' @param violinLayer Adds a violin layer (default = FALSE)

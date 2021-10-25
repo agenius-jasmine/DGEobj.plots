@@ -35,13 +35,13 @@ obsPlot(
 countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM,FPKM, FPK and TPM.
 This parameter is passed to DGEobj.utils::convertCounts (default = NULL)}
 
-\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (optional).}
+\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts. (optional).}
 
-\item{convert_log}{Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = FALSE)}
+\item{convert_log}{Parameter to pass to DGEobj.utils::convertCounts. (default = FALSE)}
 
-\item{convert_normalize}{Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = none)}
+\item{convert_normalize}{Parameter to pass to DGEobj.utils::convertCounts. (default = none)}
 
-\item{convert_prior.count}{Parameter to pass to DGEobj.utils::convertCounts. See associated help documentation for details (default = NULL)}
+\item{convert_prior.count}{Parameter to pass to DGEobj.utils::convertCounts. (default = NULL)}
 
 \item{designTable}{Name of the design table in the DGEObj from which the grouping column will be extracted. (default = design)}
 
