@@ -131,16 +131,11 @@ mapDGEobj <- function(dgeObj,
                                    events            = events)
 
     } else {
-        if (all(c("ggraph", "tidygraph") %in% .packages(all.available = T))) {
-            suppressMessages(do.call("require", list("ggraph")))
-            suppressMessages(do.call("require", list("tidygraph")))
-
-            tidy_graph <- tbl_graph(nodes = nodes, edges = edges)
+        tidy_graph <- tidygraph::tbl_graph(nodes = nodes, edges = edges)
 
             ggraph(tidy_graph) +
                 geom_edge_link() +
                 geom_node_point(aes(color = Type), size = 12) +
                 geom_node_label(aes(label = child), size = 3)
-            }
     }
 }
