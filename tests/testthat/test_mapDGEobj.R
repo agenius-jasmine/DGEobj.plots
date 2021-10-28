@@ -6,10 +6,10 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     expect_s3_class(map_DGEobj, c("canvasXpress", "htmlwidget"))
 
     map_DGEobj <- mapDGEobj(t_obj1, plotType = "ggplot")
-    expect_s3_class(map_DGEobj, "igraph")
+    expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     map_DGEobj <- mapDGEobj(t_obj1, plotType = "ggplot", directed = FALSE)
-    expect_s3_class(map_DGEobj, "igraph")
+    expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     msg <- "dgeObj must be specified and must be of class 'DGEobj'."
     expect_error(mapDGEobj(),
@@ -48,17 +48,17 @@ test_that('mapDGEobj.R: mapDGEobj()', {
                                            plotType = "ggplot",
                                            directed = NULL),
                                 regexp = msg)
-    expect_s3_class(map_DGEobj, "igraph")
+    expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
                                            plotType = "ggplot",
                                            directed = "Invalidvalue"),
                    regexp = msg)
-    expect_s3_class(map_DGEobj, "igraph")
+    expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
                                            plotType = "ggplot",
                                            directed = c(TRUE, FALSE)),
                    regexp = msg)
-    expect_s3_class(map_DGEobj, "igraph")
+    expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 })

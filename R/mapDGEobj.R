@@ -23,7 +23,6 @@
 #'
 #' @import magrittr
 #' @importFrom assertthat assert_that
-#' @importFrom igraph graph_from_data_frame
 #' @importFrom canvasXpress canvasXpress
 #' @importFrom htmlwidgets JS
 #' @importFrom dplyr filter rename left_join
@@ -132,7 +131,16 @@ mapDGEobj <- function(dgeObj,
                                    events            = events)
 
     } else {
-        igraph::graph_from_data_frame(d = edges, vertices = nodes, directed = directed)
-    }
+        if (all(c("ggraph", "tidygraph") %in% .packages(all.available = T))) {
+            suppressMessages(do.call("require", list("ggraph")))
+            suppressMessages(do.call("require", list("tidygraph")))
 
+            tidy_graph <- tbl_graph(nodes = nodes, edges = edges)
+
+            ggraph(tidy_graph) +
+                geom_edge_link() +
+                geom_node_point(aes(color = Type), size = 12) +
+                geom_node_label(aes(label = child), size = 3)
+            }
+    }
 }
