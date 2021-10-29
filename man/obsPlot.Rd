@@ -20,7 +20,7 @@ obsPlot(
   xlab,
   ylab,
   title,
-  facet = TRUE,
+  facet = FALSE,
   axisFree = TRUE
 )
 }
@@ -56,7 +56,7 @@ This parameter is passed to DGEobj.utils::convertCounts}
 \item{title}{Plot title (optional)}
 
 \item{facet}{Specifies whether to facet (TRUE) or print individual plots
-(FALSE)  (default = TRUE)}
+(FALSE)  (default = FALSE)}
 
 \item{axisFree}{Specify same scale or independent scales for each subplot (default = TRUE;
 Allowed values: TRUE or FALSE)}
@@ -64,9 +64,9 @@ Allowed values: TRUE or FALSE)}
 \item{data}{A  DGEObject. The countsMatrix in the DGEObject is extracted to plot the data. (required)}
 }
 \value{
-Plot of type canvasXpress or ggplot. If Facet = TRUE (default) returns a faceted object. If
-  facet = FALSE, returns a list of objects indexed
-  by observation (gene) names.
+Plot of type canvasXpress or ggplot. If facet = FALSE (default),
+returns a list of objects indexed by observation (gene) names.
+If facet = TRUE returns a faceted object.
 }
 \description{
 Provides a summary plot (box/violin) for each observation (gene), showing data for each
@@ -88,21 +88,22 @@ Counts Matrix. User can also provide input parameters to convert the counts matr
   obsPlot(DGEobj,
           designTable = "design",
           group = "replicategroup",
-          countsMatrix = "counts")
+          countsMatrix = "counts",
+          facet = TRUE)
 
   # Faceted violin plot
   obsPlot(DGEobj,
            violinLayer = TRUE,
            designTable = "design",
            group = "replicategroup",
-           countsMatrix = "counts")
+           countsMatrix = "counts",
+           facet = TRUE)
 
   # Return a list of plot for each individual gene
   myplots <- obsPlot(DGEobj,
                      designTable = "design",
                      group = "replicategroup",
-                     countsMatrix = "counts",
-                     facet = FALSE)
+                     countsMatrix = "counts")
   # Plot one from the list
   myplots[[2]]
 
