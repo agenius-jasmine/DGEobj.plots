@@ -41,7 +41,8 @@
 #'
 #' @examples
 #' \dontrun{
-#'    # Simple plot with custom title (dgeObj is a name of DGEobj and contrast is a name of topTable dataframe)
+#'    # Simple plot with custom title
+#'    #(dgeObj is a name of DGEobj and contrast is a name of topTable dataframe)
 #'    contrast <- names(DGEobj::getItems(dgeObj, "topTable"))[1]
 #'    myPlot <- volcanoPlot(dgeObj,
 #'                          contrast,
