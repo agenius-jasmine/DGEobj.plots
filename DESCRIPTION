@@ -32,7 +32,10 @@ Imports:
     utils,
     edgeR,
     limma  (>= 3.38),
-    htmlwidgets
+    htmlwidgets,
+    tidyr,
+    tibble,
+    rlang
 Suggests:
     knitr,
     rmarkdown,
