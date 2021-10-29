@@ -25,6 +25,8 @@
 #'   Default = ReplicateGroup or rownames of dgeObj. Set to NULL to disable
 #'   text labels.
 #' @param title A title for the plot. (Optional)
+#' @param xlab x axis label (Optional)
+#' @param ylab y axis label (Optional)
 #' @param vlineIntercept X intercept of vertical line (Optional)
 #' @param hlineIntercept Y intercept of horizontal line (Optional)
 #'
@@ -454,7 +456,7 @@ ggplotMDS <- function(dgeObj,
 #' @param topN The number of dimensions to plot (default = 10)
 #' @param cumVarLimit The maximum cumulative variance to plot. Range 0-1. (default = 0.9)
 #' @param barColor Fill and outline color default = "dodgerblue4"
-#' @param barWidth. Range 0-1. Applicable only for ggplot. (default = 0.65)
+#' @param barWidth Range 0-1. Applicable only for ggplot. (default = 0.65)
 #'
 #' @return A list with two plots(ggplot or canvasXpress plots) and the variance explained data.frame.
 #'
