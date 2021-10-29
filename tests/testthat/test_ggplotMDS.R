@@ -54,21 +54,21 @@ test_that("ggplotMDS.R: ggplotMDS()", {
 
     mds_plot <- ggplotMDS(dgeObj      = t_obj1,
                           designTable = "design",
-                          colorBy     =  "ReplicateGroup",
-                          shapeBy     =  "ReplicateGroup",
+                          colorBy     = "ReplicateGroup",
+                          shapeBy     = "ReplicateGroup",
                           plotType    = "ggplot")
     expect_s3_class(mds_plot$plot, c("gg", "ggplot"))
 
     mds_plot <- ggplotMDS(dgeObj      = t_obj1,
                           designTable = "design",
-                          colorBy     =  "ReplicateGroup",
+                          colorBy     = "ReplicateGroup",
                           sizeBy      = "ReplicateGroup",
                           plotType    = "ggplot")
     expect_s3_class(mds_plot$plot, c("gg", "ggplot"))
 
     mds_plot <- ggplotMDS(dgeObj      = t_obj1,
                           designTable = "design",
-                          colorBy     =  "ReplicateGroup",
+                          colorBy     = "ReplicateGroup",
                           plotType    = "ggplot")
     expect_s3_class(mds_plot$plot, c("gg", "ggplot"))
 
@@ -81,9 +81,9 @@ test_that("ggplotMDS.R: ggplotMDS()", {
     expect_error(ggplotMDS(),
                  regexp = msg)
 
-    #Testing optional parameters
+    # Testing optional parameters
 
-    #plotType
+    # plotType
     msg <- "plotType must be either canvasXpress or ggplot. Assigning default value 'CanvasXpress'."
     expect_warning(ggplotMDS(dgeObj = t_obj1,
                            plotType = "cx"),
@@ -91,7 +91,7 @@ test_that("ggplotMDS.R: ggplotMDS()", {
     expect_warning(ggplotMDS(dgeObj = t_obj1,
                            plotType = NULL),
                  regexp = msg)
-    #designTable
+    # designTable
     msg <- "designTable is either missing or invalid. Assigning default object of type 'design'."
     expect_warning(mds_plot <- ggplotMDS(dgeObj      = t_obj1,
                                          designTable = "not a valid value"),
