@@ -33,9 +33,9 @@ obsPlot(
 
 \item{convertCounts}{A flag to indicate if counts matrix need to be converted or taken as is. Default value is NULL. This indicates
 countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM,FPKM, FPK and TPM.
-This parameter is passed to DGEobj.utils::convertCounts}
+This parameter is passed to DGEobj.utils::convertCounts (default = NULL)}
 
-\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts.}
+\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts. (optional).}
 
 \item{convert_log}{Parameter to pass to DGEobj.utils::convertCounts. (default = FALSE)}
 
@@ -49,7 +49,7 @@ This parameter is passed to DGEobj.utils::convertCounts}
 
 \item{violinLayer}{Adds a violin layer (default = FALSE)}
 
-\item{showPoints}{Shows the datapoints on the plot (default = TRUE)}
+\item{showPoints}{Shows the data points on the plot (default = TRUE)}
 
 \item{xlab}{X axis label (defaults to group column name if not specified)}
 
@@ -58,7 +58,7 @@ This parameter is passed to DGEobj.utils::convertCounts}
 \item{title}{Plot title (optional)}
 
 \item{facet}{Specifies whether to facet (TRUE) or print individual plots
-(FALSE)  (default = FALSE)}
+(FALSE)  (default = TRUE). It is recommended to facet no more than 40 plots. If 40 of more plots are needed, please set this argument to FALSE}
 
 \item{axisFree}{Specify same scale or independent scales for each subplot (default = TRUE;
 Allowed values: TRUE or FALSE)}
@@ -83,16 +83,18 @@ Counts Matrix. User can also provide input parameters to convert the counts matr
 }
 \examples{
 \dontrun{
+  #subset the DGEobject to only 6 genes before plotting
+  DGEobj6 <- DGEobj[1:6,]
 
   # Faceted boxplot
-  obsPlot(DGEobj,
+  obsPlot(DGEobj6,
           designTable = "design",
           group = "replicategroup",
           countsMatrix = "counts",
           facet = TRUE)
 
   # Faceted violin plot
-  obsPlot(DGEobj,
+  obsPlot(DGEobj6,
            violinLayer = TRUE,
            designTable = "design",
            group = "replicategroup",
@@ -100,7 +102,7 @@ Counts Matrix. User can also provide input parameters to convert the counts matr
            facet = TRUE)
 
   # Return a list of plot for each individual gene
-  myplots <- obsPlot(DGEobj,
+  myplots <- obsPlot(DGEobj6,
                      designTable = "design",
                      group = "replicategroup",
                      countsMatrix = "counts")
@@ -108,7 +110,7 @@ Counts Matrix. User can also provide input parameters to convert the counts matr
   myplots[[2]]
 
   #ggplot
-  obsPlot(DGEobj,
+  obsPlot(DGEobj6,
           designTable = "design",
           group = "replicategroup",
           countsMatrix = "counts",
