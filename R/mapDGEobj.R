@@ -92,6 +92,7 @@ mapDGEobj <- function(dgeObj,
         dplyr::rename(Type = V1)
 
     type[["child"]] <- rownames(type)
+    type <- select(type, child, Type)
 
     basetype <- attr(dgeObj, "basetype") %>%
         as.data.frame() %>%
@@ -103,9 +104,8 @@ mapDGEobj <- function(dgeObj,
 
     nodes <- dplyr::left_join(type, basetype, by = "child")
 
-
     if (plotType == "canvasxpress") {
-        colnames(nodes) <- c("Type", "id", "BaseType")
+        colnames(nodes) <- c("id", "Type", "BaseType")
         colnames(edges) <- c("id1", "id2")
 
         events <- htmlwidgets::JS("{ 'mousemove' : function(o, e, t) {
