@@ -76,13 +76,6 @@ mapDGEobj <- function(dgeObj,
         dplyr::rename(parent = V1) %>%
         dplyr::filter(nchar(parent) > 0)
 
-    browser()
-    parent %>%
-        tibble::rownames_to_column("child") %>%
-        rbind(., mul_parent) %>%
-        View()
-
-
     parent[["child"]] <- rownames(parent)
 
     parent <- rbind(parent, mul_parent)
@@ -98,11 +91,6 @@ mapDGEobj <- function(dgeObj,
         as.data.frame() %>%
         dplyr::rename(Type = V1)
 
-    browser()
-    type %>%
-        tibble::rownames_to_column("child") %>%
-        View()
-
     type[["child"]] <- rownames(type)
 
     basetype <- attr(dgeObj, "basetype") %>%
@@ -110,13 +98,6 @@ mapDGEobj <- function(dgeObj,
         t() %>%
         as.data.frame() %>%
         dplyr::rename(BaseType = V1)
-
-    browser()
-
-    basetype %>%
-        tibble::rownames_to_column("child") %>%
-        dplyr::left_join(type, ., by = "child") %>%
-        View()
 
     basetype[["child"]] <- rownames(basetype)
 
