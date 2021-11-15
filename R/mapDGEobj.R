@@ -4,11 +4,11 @@
 #' data items in a DGEobj.
 #'
 #' @param dgeObj DGEobj to find the parent/child relationships between data items.
-#' @param plotType Must be canvasXpress or igraph (default = canvasXpress).
-#' @param directed Only for igraph. Indicates if the graph should
+#' @param plotType Must be canvasXpress or ggplot (default = canvasXpress).
+#' @param directed Only for ggplot. Indicates if the graph should
 #'     be directed or not. (default = TRUE)
 #'
-#' @return A class igraph network object or a canvasXpress network plot.
+#' @return A class ggplot object or a canvasXpress network plot.
 #'
 #'
 #' @examples
@@ -26,7 +26,6 @@
 #' @importFrom canvasXpress canvasXpress
 #' @importFrom htmlwidgets JS
 #' @importFrom dplyr filter rename left_join
-#' @importFrom tidygraph tbl_graph
 #'
 #' @export
 mapDGEobj <- function(dgeObj,
@@ -42,8 +41,8 @@ mapDGEobj <- function(dgeObj,
     if (any(is.null(plotType),
             !is.character(plotType),
             length(plotType) != 1,
-            !tolower(plotType) %in% c("canvasxpress", "igraph"))) {
-        warning("plotType must be either canvasXpress or igraph. Assigning default value 'canvasXpress'.")
+            !tolower(plotType) %in% c("canvasxpress", "ggplot"))) {
+        warning("plotType must be either canvasXpress or ggplot. Assigning default value 'canvasXpress'.")
         plotType <- "canvasxpress"
     }
 
@@ -135,11 +134,21 @@ mapDGEobj <- function(dgeObj,
                                    events            = events)
 
     } else {
+        if (!requireNamespace("tidygraph", quietly = TRUE)) {
+            stop("Package \"tidygraph\" needed for this function to work. Please install it.",
+                 call. = FALSE)
+        }
+
+        if (!requireNamespace("ggraph", quietly = TRUE)) {
+            stop("Package \"ggraph\" needed for this function to work. Please install it.",
+                 call. = FALSE)
+        }
+
         tidy_graph <- tidygraph::tbl_graph(nodes = nodes, edges = edges)
 
-            ggraph(tidy_graph) +
-                geom_edge_link() +
-                geom_node_point(aes(color = Type), size = 12) +
-                geom_node_label(aes(label = child), size = 3)
+        ggraph::ggraph(tidy_graph) +
+            ggraph::geom_edge_link() +
+            ggraph::geom_node_point(aes(color = Type), size = 12) +
+            ggraph::geom_node_label(aes(label = child), size = 3)
     }
 }

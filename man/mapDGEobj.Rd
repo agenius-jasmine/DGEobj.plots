@@ -9,13 +9,13 @@ mapDGEobj(dgeObj, plotType = "canvasXpress", directed = TRUE)
 \arguments{
 \item{dgeObj}{DGEobj to find the parent/child relationships between data items.}
 
-\item{plotType}{Must be canvasXpress or igraph (default = canvasXpress).}
+\item{plotType}{Must be canvasXpress or ggplot (default = canvasXpress).}
 
-\item{directed}{Only for igraph. Indicates if the graph should
+\item{directed}{Only for ggplot. Indicates if the graph should
 be directed or not. (default = TRUE)}
 }
 \value{
-A class igraph network object or a canvasXpress network plot.
+A class ggplot object or a canvasXpress network plot.
 }
 \description{
 Reads a DGEobj and either (1) produces a node pair file ready for plotting or (2) a plot visualizing parent/child relationships between

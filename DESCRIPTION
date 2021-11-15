@@ -38,6 +38,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    tidygraph
+    tidygraph,
+    ggraph
 RoxygenNote: 7.1.2
 VignetteBuilder: knitr

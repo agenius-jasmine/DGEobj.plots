@@ -1,5 +1,6 @@
 context("DGEobj.plots - tests for mapDGEobj.R functions")
-
+library("ggraph")
+library("tidygraph")
 
 test_that('mapDGEobj.R: mapDGEobj()', {
     map_DGEobj <- mapDGEobj(t_obj1)
@@ -21,7 +22,7 @@ test_that('mapDGEobj.R: mapDGEobj()', {
 
     #Optional parameters
     #plotType
-    msg <- "plotType must be either canvasXpress or igraph. Assigning default value 'canvasXpress'."
+    msg <- "plotType must be either canvasXpress or ggplot. Assigning default value 'canvasXpress'."
     expect_warning( map_DGEobj <- mapDGEobj(t_obj1,
                                             plotType = "cx"),
                     regexp = msg)
@@ -45,19 +46,19 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     #directed
     msg <- "directed must be a singular logical value. Assigning default value TRUE."
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
-                                           plotType = "igraph",
+                                           plotType = "ggplot",
                                            directed = NULL),
                                 regexp = msg)
     expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
-                                           plotType = "igraph",
+                                           plotType = "ggplot",
                                            directed = "Invalidvalue"),
                    regexp = msg)
     expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
 
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
-                                           plotType = "igraph",
+                                           plotType = "ggplot",
                                            directed = c(TRUE, FALSE)),
                    regexp = msg)
     expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
