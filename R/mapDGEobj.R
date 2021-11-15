@@ -146,9 +146,19 @@ mapDGEobj <- function(dgeObj,
 
         tidy_graph <- tidygraph::tbl_graph(nodes = nodes, edges = edges)
 
-        ggraph::ggraph(tidy_graph) +
-            ggraph::geom_edge_link() +
+        if (directed) {
+            plain_graph <- ggraph::ggraph(tidy_graph) +
+                ggraph::geom_edge_link(arrow = arrow(length = unit(4, "mm")),
+                                       end_cap = circle(6, "mm"))
+
+        } else {
+            plain_graph <- ggraph::ggraph(tidy_graph) +
+                ggraph::geom_edge_link()
+        }
+
+        plain_graph  +
             ggraph::geom_node_point(aes(color = Type), size = 12) +
             ggraph::geom_node_label(aes(label = child), size = 3)
+
     }
 }
