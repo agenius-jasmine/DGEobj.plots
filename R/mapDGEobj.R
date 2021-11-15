@@ -147,12 +147,12 @@ mapDGEobj <- function(dgeObj,
         tidy_graph <- tidygraph::tbl_graph(nodes = nodes, edges = edges)
 
         if (directed) {
-            plain_graph <- ggraph::ggraph(tidy_graph) +
+            plain_graph <- ggraph::ggraph(tidy_graph, layout = "sugiyama") +
                 ggraph::geom_edge_link(arrow = arrow(length = unit(4, "mm")),
                                        end_cap = circle(6, "mm"))
 
         } else {
-            plain_graph <- ggraph::ggraph(tidy_graph) +
+            plain_graph <- ggraph::ggraph(tidy_graph, layout = "sugiyama") +
                 ggraph::geom_edge_link()
         }
 
