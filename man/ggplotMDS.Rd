@@ -23,17 +23,17 @@ ggplotMDS(
 \arguments{
 \item{dgeObj}{A DGEobj object with a DGEList and design table (required)}
 
-\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress).}
+\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress)}
 
 \item{designTable}{Name of the design table object (default = design)}
 
-\item{colorBy}{A column name in the design table.Points are colored by the values in that column (default = ReplicateGroup)}
+\item{colorBy}{A column name in the design table. Points are colored by the values in that column (default = ReplicateGroup)}
 
-\item{shapeBy}{A column name in the design table.Points are shaped by the values in that column (default = ReplicateGroup)}
+\item{shapeBy}{A column name in the design table. Points are shaped by the values in that column (default = NULL)}
 
-\item{sizeBy}{A column name in the design table.Points are sized by the values in that column (default = ReplicateGroup)}
+\item{sizeBy}{A column name in the design table. Points are sized by the values in that column (default = NULL)}
 
-\item{top}{Number of most variant genes to include (Default = Inf)}
+\item{top}{Number of most variant genes to include (default = Inf)}
 
 \item{labels}{A column name in the design table. Text labels for the samples. These should be short
 abbreviations of the sample identifiers.
@@ -41,6 +41,10 @@ Default = ReplicateGroup or rownames of dgeObj. Set to NULL to disable
 text labels.}
 
 \item{title}{A title for the plot. (Optional)}
+
+\item{xlab}{x axis label (Optional)}
+
+\item{ylab}{y axis label (Optional)}
 
 \item{hlineIntercept}{Y intercept of horizontal line (Optional)}
 

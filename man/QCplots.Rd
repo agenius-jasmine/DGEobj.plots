@@ -22,7 +22,7 @@ of type AlignQC. (Required)}
 
 \item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress).}
 
-\item{plotCategory}{One of "bar", "point", "pointline".  For a different
+\item{plotCategory}{One of "bar", "point", "pointline" or "histogram".  For a different
 plot type for each metric, pass a list of plotCategories with length equal to
 length(metricNames). (default = "bar")}
 
@@ -37,7 +37,7 @@ deviations.  It is used to calculate the standard deviation for the
 placement of horizontal reference lines (hlineSD argument).  The adaptive
 winsorization used here only trims extreme values when normality is
 violated. see https://www.r-bloggers.com/winsorization/ for details.
-(Default = TRUE).}
+(default = TRUE).}
 }
 \value{
 canvasXpress or ggplot object if one plot is specified.

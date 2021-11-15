@@ -1,6 +1,6 @@
 #' Plot edgeR dispersion from a DGEobj
 #'
-#' Creates an edgeR dispersion plot for RNA-Seq QC purposes.  Takes a DGeobj which has a counts matrix
+#' Creates an edgeR dispersion plot for RNA-Seq QC purposes.  Takes a DGEobj which has a counts matrix
 #' or DGEList as input.  Dispersion is plotted against AveLogCPM.  Optionally,
 #' the plot can instead be Biological Coefficient of Variation (BCV is the square root of
 #' dispersion) against AveLogCPM.
@@ -10,9 +10,8 @@
 #' @param countsMatrix If TRUE, uses the countsMatrix in DGEobj to construct the plot else DGElist will be used. (default = TRUE)
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
 #' @param plotCategory One of "dispersion" or "BCV" (default = "dispersion")
-#' @param lineFit (default = NULL) Any type supported by geom_smooth(if plotType is ggplot) or
-#' one of glm, lm, loess, gam if plotType is canvasXpress. Loess is recommended.
-#'   recommended.
+#' @param lineFit If the plotType is ggplot, any method supported by `geom_smooth()`. If the plotType is canvasXpress, one of glm, lm, loess, gam is accepted .
+#' Loess is recommended. (default = NULL)
 #' @param ... Extra parameters to pass to edgeR::estimateDisp
 #'
 #' @return canvasxpress or ggplot object based on plotType selection
@@ -58,17 +57,7 @@ plotDispersion <- function(dgeObj,
         replicateGroupCol <- "ReplicateGroup"
     }
 
-    # Placeholder message until this issue can be fixed. We are passing the ReplicateGroupCol as a parameter
-    # into the function. However, we are only able to hardcode the name of the column in the model.matrixformula and not
-    # able to pass a variable that holds the Replicate Group column name. Standard options like eval and
-    #rlang::sym are not working. Function returns an error and the plot execution stops if the name of the ReplicateGroup column  is not "ReplicateGroup".
-    # This error is temporary and will need to be removed after this issue is fixed.
-    #############################################################################################
-    assertthat::assert_that(replicateGroupCol == "ReplicateGroup",
-                            msg = "Function supports only one value for ReplicateGroup.")
-    ###############################################################################
-
-    designMatrix <- stats::model.matrix(~ 0 + ReplicateGroup, design)
+    designMatrix <- stats::model.matrix(as.formula(paste("~ 0 +", replicateGroupCol)), design)
 
     if (any(is.null(countsMatrix),
             !is.logical(countsMatrix),
