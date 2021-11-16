@@ -23,21 +23,21 @@
 #' Use the appropriate arguments to use an FDR measure instead of p-value.
 #'
 #' @param dgeObj DGEobj with a topTable dataframe (required)
-#' @param contrast Name of the contrast.
-#' @param plotType Plot type must be canvasXpress or ggplot. (default = canvasXpress)
-#' @param logRatioCol Name of the LogRatio column. (default = "logFC")
-#' @param logIntCol Name of the LogIntensity column. (default = "AveExpr")
-#' @param pvalCol Name of the p-value or FDR column. (default = "P.Value")
-#' @param xlab X axis label. (default is the LogIntensity column name)
-#' @param ylab Y axis label. (default is the LogRatio column name)
-#' @param title Plot title (optional).
-#' @param pthreshold Used to color points. (default = 0.01)
-#' @param geneNameCol geneName column in geneData from DGEobj. This column will be used to label significantly changed points.
+#' @param contrast Name of the contrast
+#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress)
+#' @param logRatioCol Name of the LogRatio column (default = "logFC")
+#' @param logIntCol Name of the LogIntensity column (default = "AveExpr")
+#' @param pvalCol Name of the p-value or FDR column (default = "P.Value")
+#' @param xlab X axis label (default = NULL)
+#' @param ylab Y axis label (default = NULL)
+#' @param title Plot title (optional)
+#' @param pthreshold The p value threshold used to used to color points (default = 0.01)
+#' @param geneNameCol geneName column in geneData from DGEobj. This column will be used to label significantly changed points
 #' @param pthresholdLine Color for a horizontal line at the p-threshold. (default = NULL (disabled))
-#' @param sizeByIntensity If TRUE, creates a column to support sizeByIntensity. (default = TRUE)
+#' @param sizeByIntensity Have the points sized by the LogInt column (default = TRUE) or by the group column (FALSE)
 #' @param foldChangeThreshold Position of reference vertical lines for fold change. (default = 1.5)
 #'
-#' @return canvasxpress or ggplot object based on plotType selection.
+#' @return canvasXpress or ggplot object.
 #'
 #' @examples
 #' \dontrun{

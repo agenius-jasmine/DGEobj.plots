@@ -6,20 +6,19 @@
 #'
 #' Returns a list of QC plots for the metricNames provided as input.
 #'
-#' By default, horizontal reference lines are drawn  at the median and +/- n SDs based on the
+#' By default, horizontal reference lines are drawn at the median and +/- n SDs based on the
 #' hlineSD argument. These are statistical reference points, NOT pass/fail limits.
 #'
 #' @param DGEdata DGEobj(Required)
 #' @param metricNames A list of metrics to plot. Values must exist in column names of the item
 #' of type AlignQC. (Required)
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
-#' @param plotCategory One of "bar", "point", "pointline" or "histogram".  For a different
+#' @param plotCategory One of "bar", "point", "pointline" or "histogram". For a different
 #'   plot type for each metric, pass a list of plotCategories with length equal to
 #'   length(metricNames). (default = "bar")
-#' @param labelAngle Angle to set the sample labels on the X axis (default = 30;
-#'   Range = 0 - 90)
-#' @param hlineSD Draw two reference lines 1) at the median value 2) the number of
-#'   SDs defined by the value of hlineSD. (default = 3; 0 to disable the reference lines.)
+#' @param labelAngle Angle (0 - 90) to set the sample labels on the X axis (default = 30)
+#' @param hlineSD Draw two reference lines: 1) at the median value 2) the number of
+#'   SDs defined by the value of hlineSD. (default = 3). Set to 0 to disable the reference lines.
 #' @param winsorize This implements a robust method to calculate standard
 #'   deviations.  It is used to calculate the standard deviation for the
 #'   placement of horizontal reference lines (hlineSD argument).  The adaptive
