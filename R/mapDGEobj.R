@@ -16,9 +16,9 @@
 #'   # Prepare canvasxpress network plot
 #'   mynet <- mapDGEobj(dgeObj)
 #'
-#'   # Prepare an igraph object for plotting
-#'   mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
-#'   plot(mynet)
+#'   if (requireNamespace("ggraph", quietly = TRUE) || requireNamespace("tidygraph", quietly = TRUE)) {
+#'       mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
+#'     }
 #'   }
 #'
 #' @import magrittr
@@ -46,6 +46,14 @@ mapDGEobj <- function(dgeObj,
         plotType <- "canvasxpress"
     }
 
+    if (plotType == "ggplot") {
+        assertthat::assert_that(requireNamespace("ggraph", quietly = TRUE),
+                                msg = "ggraph package is required for this plot type")
+
+        assertthat::assert_that(requireNamespace("tidygraph", quietly = TRUE),
+                                msg = "tidygraph package is required for this plot type")
+    }
+
     if (any(is.null(directed),
             !is.logical(directed),
             length(directed) != 1)) {
@@ -56,7 +64,6 @@ mapDGEobj <- function(dgeObj,
     child <- names(dgeObj) %>%
         as.data.frame()
     colnames(child) <- "child"
-
 
     parent_list <- attr(dgeObj, "parent")
     mul_parent <- setNames(data.frame(matrix(ncol = 2, nrow = 0)), c("child", "parent"))
@@ -134,22 +141,12 @@ mapDGEobj <- function(dgeObj,
                                    events            = events)
 
     } else {
-        if (!requireNamespace("tidygraph", quietly = TRUE)) {
-            stop("Package \"tidygraph\" needed for this function to work. Please install it.",
-                 call. = FALSE)
-        }
-
-        if (!requireNamespace("ggraph", quietly = TRUE)) {
-            stop("Package \"ggraph\" needed for this function to work. Please install it.",
-                 call. = FALSE)
-        }
-
         tidy_graph <- tidygraph::tbl_graph(nodes = nodes, edges = edges)
 
         if (directed) {
             plain_graph <- ggraph::ggraph(tidy_graph, layout = "sugiyama") +
                 ggraph::geom_edge_link(arrow = arrow(length = unit(4, "mm")),
-                                       end_cap = circle(6, "mm"))
+                                       end_cap = ggraph::circle(6, "mm"))
 
         } else {
             plain_graph <- ggraph::ggraph(tidy_graph, layout = "sugiyama") +

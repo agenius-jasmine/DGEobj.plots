@@ -26,9 +26,9 @@ data items in a DGEobj.
   # Prepare canvasxpress network plot
   mynet <- mapDGEobj(dgeObj)
 
-  # Prepare an igraph object for plotting
-  mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
-  plot(mynet)
+  if (requireNamespace("ggraph", quietly = TRUE) || requireNamespace("tidygraph", quietly = TRUE)) {
+      mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
+    }
   }
 
 }
