@@ -20,6 +20,7 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
                                            plotType = "cx"),
                    regexp = msg)
+
     expect_s3_class(map_DGEobj, c("canvasXpress", "htmlwidget"))
 
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
@@ -35,6 +36,7 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
                                            plotType = c("canvasXpress", "igraph")),
                    regexp = msg)
+
     expect_s3_class(map_DGEobj, c("canvasXpress", "htmlwidget"))
 
     #using ggplot
@@ -52,7 +54,7 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     msg <-
         "directed must be a singular logical value. Assigning default value TRUE."
     expect_warning(map_DGEobj <- mapDGEobj(t_obj1,
-                                           plotType = "ggplot",
+                                           plotType = "igraph",
                                            directed = NULL),
                    regexp = msg)
     expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
@@ -72,4 +74,5 @@ test_that('mapDGEobj.R: mapDGEobj()', {
     ),
     regexp = msg)
     expect_s3_class(map_DGEobj, c("ggraph", "gg", "ggplot"))
+
 })
