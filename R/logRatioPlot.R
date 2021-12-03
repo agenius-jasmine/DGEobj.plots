@@ -54,7 +54,7 @@
 #'               xColname = "Contrast",
 #'               axisFree = FALSE,
 #'               facet = TRUE,
-#'               title = "Test"
+#'               title = "Test",
 #'               labelAngle = 60)
 #' }
 #'
