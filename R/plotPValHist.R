@@ -27,10 +27,10 @@
 #'
 #' @export
 plotPvalHist <- function(dgeObj,
-                         P.Val          = "P.Value",
-                         plotType       = "canvasXpress",
-                         facet          = TRUE,
-                         binWidth       = 0.02) {
+                         P.Val    = "P.Value",
+                         plotType = "canvasXpress",
+                         facet    = TRUE,
+                         binWidth = 0.02) {
 
     assertthat::assert_that(!missing(dgeObj),
                             !is.null(dgeObj),
