@@ -31,10 +31,10 @@
 #' @param xlab X axis label (default = NULL)
 #' @param ylab Y axis label (default = NULL)
 #' @param title Plot title (optional)
-#' @param pthreshold The p value threshold used to used to color points (default = 0.01)
-#' @param geneNameCol geneName column in geneData from DGEobj. This column will be used to label significantly changed points
-#' @param pthresholdLine Color for a horizontal line at the p-threshold. (default = NULL (disabled))
-#' @param sizeByIntensity Have the points sized by the LogInt column (default = TRUE) or by the group column (FALSE)
+#' @param pthreshold The p value threshold used to color points (default = 0.01)
+#' @param geneNameCol geneName column in geneData from DGEobj. This column will be used to label significantly changed points (optional)
+#' @param pthresholdLine Color string to use a horizontal line at the p-threshold. (default = NULL (disabled))
+#' @param sizeByIntensity To have the points sized by the LogInt column (default = TRUE) or by the group column (FALSE)
 #' @param foldChangeThreshold Position of reference vertical lines for fold change. (default = 1.5)
 #'
 #' @return canvasXpress or ggplot object.
@@ -83,17 +83,17 @@
 #' @export
 volcanoPlot <- function(dgeObj,
                         contrast,
-                        plotType        = "canvasXpress",
-                        logRatioCol     = "logFC",
-                        logIntCol       = "AveExpr",
-                        pvalCol         = "P.Value",
-                        pthreshold      = 0.01,
+                        plotType            = "canvasXpress",
+                        logRatioCol         = "logFC",
+                        logIntCol           = "AveExpr",
+                        pvalCol             = "P.Value",
+                        pthreshold          = 0.01,
                         geneNameCol,
-                        xlab            = NULL,
-                        ylab            = NULL,
-                        title           = NULL,
-                        sizeByIntensity = TRUE,
-                        pthresholdLine  = NULL,
+                        xlab                = NULL,
+                        ylab                = NULL,
+                        title               = NULL,
+                        sizeByIntensity     = TRUE,
+                        pthresholdLine      = NULL,
                         foldChangeThreshold = 1.5) {
     ##### Asserts
     assertthat::assert_that(!missing(dgeObj),
@@ -287,20 +287,20 @@ volcanoPlot <- function(dgeObj,
 
         }
 
-        canvasXpress::canvasXpress( data              = cx.data,
-                                    varAnnot          = var.annot,
-                                    decorations       = decorations,
-                                    graphType         = "Scatter2D",
-                                    colorBy           = "Group",
-                                    colors            = ssc$symbolColor,
-                                    legendPosition    = "right",
-                                    showDecorations   = TRUE,
-                                    title             = title,
-                                    xAxisTitle        = xlab,
-                                    yAxisTitle        = ylab,
-                                    sizeBy            = sizeBy,
-                                    sizes             = sizes,
-                                    events            = events)
+        canvasXpress::canvasXpress( data            = cx.data,
+                                    varAnnot        = var.annot,
+                                    decorations     = decorations,
+                                    graphType       = "Scatter2D",
+                                    colorBy         = "Group",
+                                    colors          = ssc$symbolColor,
+                                    legendPosition  = "right",
+                                    showDecorations = TRUE,
+                                    title           = title,
+                                    xAxisTitle      = xlab,
+                                    yAxisTitle      = ylab,
+                                    sizeBy          = sizeBy,
+                                    sizes           = sizes,
+                                    events          = events)
 
     } else {
 
