@@ -9,7 +9,7 @@
 #' By default, horizontal reference lines are drawn at the median and +/- n SDs based on the
 #' hlineSD argument. These are statistical reference points, NOT pass/fail limits.
 #'
-#' @param DGEdata DGEobj(Required)
+#' @param DGEdata A DGEobj object with an an item of type "alignQC" (Required)
 #' @param metricNames A list of metrics to plot. Values must exist in column names of the item
 #' of type AlignQC. (Required)
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
