@@ -529,9 +529,17 @@ MDS_var_explained <- function(mds,
         mds <- limma::plotMDS(mds, plot = FALSE)
     }
 
+    mds.distances <- tryCatch(
+        expr = {
+            mds %$% distance.matrix %>% as.dist
+        },
+        error = function(e) {
+            mds %$% distance.matrix.squared %>% as.dist
+        }
+    )
+
     mdsvals <- tryCatch(
         expr = {
-            mds.distances <- mds %$% distance.matrix %>% as.dist
             mds.distances %>%
                 {
                     suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix) - 1))
@@ -540,7 +548,6 @@ MDS_var_explained <- function(mds,
                 as.data.frame
         },
         error = function(e) {
-            mds.distances <- mds %$% distance.matrix.squared %>% as.dist
             mds.distances %>%
                 {
                     suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix.squared) - 1))
