@@ -34,7 +34,8 @@ Imports:
     limma  (>= 3.38),
     htmlwidgets,
     tidyr,
-    rlang
+    rlang,
+    statmod
 Suggests:
     knitr,
     rmarkdown,
