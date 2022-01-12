@@ -80,6 +80,7 @@ jobs:
             R -e 'install.packages("canvasXpress")'
             R -e 'install.packages("ggrepel")'
             R -e 'install.packages("igraph")'
+            R -e 'install.packages("statmod")'
       - run:
           name: Session information and installed package versions
           command: |
