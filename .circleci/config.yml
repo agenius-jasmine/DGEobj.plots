@@ -41,11 +41,6 @@ jobs:
       - run:
           name: Build package
           command: R CMD build .
-
-      - run:
-          name: Check coverage
-          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
-
       - run:
           name: Check package
           command: |
@@ -53,6 +48,10 @@ jobs:
             R -e 'install.packages("png")'
             # Perform package check
             R CMD check *tar.gz
+      - run:
+          name: Check coverage
+          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
+
   Build-for-rLATEST:
     docker:
       - image: rocker/verse:latest
@@ -90,11 +89,6 @@ jobs:
       - run:
           name: Build package
           command: R CMD build .
-
-      - run:
-          name: Check coverage
-          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
-
       - run:
           name: Check package
           command: |
@@ -102,6 +96,10 @@ jobs:
             R -e 'install.packages("png")'
             # Perform package check
             R CMD check *tar.gz
+      - run:
+          name: Check coverage
+          command: Rscript -e 'library(covr); codecov(quiet = FALSE)'
+
 workflows:
   version: 2
   Prepare-All-R-Editions:
