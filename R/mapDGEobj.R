@@ -1,11 +1,11 @@
 #' Construct DGEobj relationships
 #'
-#' Reads a DGEobj and either (1) produces a node pair file ready for plotting or (2) a plot visualizing parent/child relationships between
+#' Reads a DGEobj and visualizes parent/child relationships between
 #' data items in a DGEobj.
 #'
 #' @param dgeObj DGEobj to find the parent/child relationships between data items.
 #' @param plotType Must be canvasXpress or ggplot (default = canvasXpress).
-#' @param directed Only for ggplot. Indicates if the graph should
+#' @param directed Only applies to ggplot. Indicates if the graph should
 #'     be directed or not. (default = TRUE)
 #'
 #' @return A class ggplot object or a canvasXpress network plot.
@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' \dontrun{
-#'   # Prepare canvasxpress network plot
+#'   # Prepare canvasXpress network plot
 #'   mynet <- mapDGEobj(dgeObj)
 #'
 #'   if (requireNamespace("ggraph", quietly = TRUE) || requireNamespace("tidygraph", quietly = TRUE)) {

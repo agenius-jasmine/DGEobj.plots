@@ -11,19 +11,19 @@ mapDGEobj(dgeObj, plotType = "canvasXpress", directed = TRUE)
 
 \item{plotType}{Must be canvasXpress or ggplot (default = canvasXpress).}
 
-\item{directed}{Only for ggplot. Indicates if the graph should
+\item{directed}{Only applies to ggplot. Indicates if the graph should
 be directed or not. (default = TRUE)}
 }
 \value{
 A class ggplot object or a canvasXpress network plot.
 }
 \description{
-Reads a DGEobj and either (1) produces a node pair file ready for plotting or (2) a plot visualizing parent/child relationships between
+Reads a DGEobj and visualizes parent/child relationships between
 data items in a DGEobj.
 }
 \examples{
 \dontrun{
-  # Prepare canvasxpress network plot
+  # Prepare canvasXpress network plot
   mynet <- mapDGEobj(dgeObj)
 
   if (requireNamespace("ggraph", quietly = TRUE) || requireNamespace("tidygraph", quietly = TRUE)) {
