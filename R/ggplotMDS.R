@@ -541,17 +541,13 @@ MDS_var_explained <- function(mds,
     mdsvals <- tryCatch(
         expr = {
             mds.distances %>%
-                {
-                    suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix) - 1))
-                } %>%
+                {suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix) - 1))} %>%
                 magrittr::set_colnames(stringr::str_c("Dim", seq_len(ncol(.)))) %>%
                 as.data.frame
         },
         error = function(e) {
             mds.distances %>%
-                {
-                    suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix.squared) - 1))
-                } %>%
+                {suppressWarnings(cmdscale(., k = ncol(mds$distance.matrix.squared) - 1))} %>%
                 magrittr::set_colnames(stringr::str_c("Dim", seq_len(ncol(.)))) %>%
                 as.data.frame
         }
