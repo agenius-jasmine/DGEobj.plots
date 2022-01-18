@@ -23,12 +23,11 @@ data items in a DGEobj.
 }
 \examples{
 \dontrun{
-  # Prepare canvasXpress network plot
-  mynet <- mapDGEobj(dgeObj)
+  # canvasXpress network plot
+  mapDGEobj(dgeObj)
 
-  if (requireNamespace("ggraph", quietly = TRUE) || requireNamespace("tidygraph", quietly = TRUE)) {
-      mynet <- mapDGEobj(dgeObj, plotType = "ggplot")
-    }
+  # ggplot object
+  mapDGEobj(dgeObj, plotType = "ggplot")
   }
 
 }
