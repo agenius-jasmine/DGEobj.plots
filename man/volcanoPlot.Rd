@@ -34,7 +34,7 @@ volcanoPlot(
 
 \item{pvalCol}{Name of the p-value or FDR column (default = "P.Value")}
 
-\item{pthreshold}{The p value threshold used to color points (default = 0.01)}
+\item{pthreshold}{The p-value threshold used to color points (default = 0.01)}
 
 \item{geneNameCol}{geneName column in geneData from DGEobj. This column will be used to label significantly changed points (optional)}
 
@@ -44,9 +44,9 @@ volcanoPlot(
 
 \item{title}{Plot title (optional)}
 
-\item{sizeByIntensity}{To have the points sized by the LogInt column (default = TRUE) or by the group column (FALSE)}
+\item{sizeByIntensity}{Size points by the LogInt column (default = TRUE) or by the group column (FALSE)}
 
-\item{pthresholdLine}{Color string to use a horizontal line at the p-threshold. (default = NULL (disabled))}
+\item{pthresholdLine}{Color value to use a horizontal line at the p-threshold. (default = NULL (disabled))}
 
 \item{foldChangeThreshold}{Position of reference vertical lines for fold change. (default = 1.5)}
 }

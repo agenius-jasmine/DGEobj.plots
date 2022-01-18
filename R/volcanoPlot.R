@@ -31,10 +31,10 @@
 #' @param xlab X axis label (default = NULL)
 #' @param ylab Y axis label (default = NULL)
 #' @param title Plot title (optional)
-#' @param pthreshold The p value threshold used to color points (default = 0.01)
+#' @param pthreshold The p-value threshold used to color points (default = 0.01)
 #' @param geneNameCol geneName column in geneData from DGEobj. This column will be used to label significantly changed points (optional)
-#' @param pthresholdLine Color string to use a horizontal line at the p-threshold. (default = NULL (disabled))
-#' @param sizeByIntensity To have the points sized by the LogInt column (default = TRUE) or by the group column (FALSE)
+#' @param pthresholdLine Color value to use a horizontal line at the p-threshold. (default = NULL (disabled))
+#' @param sizeByIntensity Size points by the LogInt column (default = TRUE) or by the group column (FALSE)
 #' @param foldChangeThreshold Position of reference vertical lines for fold change. (default = 1.5)
 #'
 #' @return canvasXpress or ggplot object.

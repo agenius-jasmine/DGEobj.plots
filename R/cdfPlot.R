@@ -28,7 +28,7 @@
 #' @param insetY y-location for the inset plot, only for ggplots (default = 0.85)
 #' @param insetWidth width of the inset plot, only for ggplots (default = 0.35)
 #'
-#' @return A list of plots. 2 plots for canvasXpress and 3 plots for ggplot.
+#' @return A list of plots -- 2 plots if plotType is 'canvasXpress' or 3 plots if plotType is 'ggplot'
 #'
 #' @examples
 #' \dontrun{

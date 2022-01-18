@@ -52,7 +52,7 @@ cdfPlot(
 \item{pvalMax}{Limit the range of the main plot (default = 0.10)}
 }
 \value{
-A list of plots. 2 plots for canvasXpress and 3 plots for ggplot.
+A list of plots -- 2 plots if plotType is 'canvasXpress' or 3 plots if plotType is 'ggplot'
 }
 \description{
 CDF plots are a good complement to p-value histograms as a way to evaluate
