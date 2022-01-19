@@ -287,20 +287,20 @@ volcanoPlot <- function(dgeObj,
 
         }
 
-        canvasXpress::canvasXpress( data            = cx.data,
-                                    varAnnot        = var.annot,
-                                    decorations     = decorations,
-                                    graphType       = "Scatter2D",
-                                    colorBy         = "Group",
-                                    colors          = ssc$symbolColor,
-                                    legendPosition  = "right",
-                                    showDecorations = TRUE,
-                                    title           = title,
-                                    xAxisTitle      = xlab,
-                                    yAxisTitle      = ylab,
-                                    sizeBy          = sizeBy,
-                                    sizes           = sizes,
-                                    events          = events)
+        canvasXpress::canvasXpress( data              = cx.data,
+                                    varAnnot          = var.annot,
+                                    decorations       = decorations,
+                                    graphType         = "Scatter2D",
+                                    colorBy           = "Group",
+                                    colorScheme       = "Dark2",
+                                    legendPosition    = "right",
+                                    showDecorations   = TRUE,
+                                    title             = title,
+                                    xAxisTitle        = xlab,
+                                    yAxisTitle        = ylab,
+                                    sizeBy            = sizeBy,
+                                    sizes             = sizes,
+                                    events            = events)
 
     } else {
 

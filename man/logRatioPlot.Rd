@@ -79,8 +79,8 @@ ggplots, one for each facetColname value \emph{(typically gene)}.
 \examples{
 \dontrun{
   # DGEobj example, subset DGEobj
+  t_obj1 <- readRDS(system.file("exampleObj.RDS", package = "DGEobj", mustWork = TRUE))
   t_obj1_subset <- subset(t_obj1, row = c(1:6))
-
 
   # Simple barplot
  logRatioPlot(t_obj1_subset,
