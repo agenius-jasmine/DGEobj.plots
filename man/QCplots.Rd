@@ -15,10 +15,10 @@ QCplots(
 )
 }
 \arguments{
-\item{DGEdata}{A DGEobj object with an item of type "alignQC" (Required)}
+\item{DGEdata}{A DGEobj object with an item of type "alignQC" (required)}
 
 \item{metricNames}{A list of metrics to plot. Values must exist in column names of the item
-of type AlignQC. (Required)}
+of type AlignQC. (required)}
 
 \item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress).}
 
