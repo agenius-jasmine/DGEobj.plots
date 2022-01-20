@@ -15,21 +15,20 @@
 #'
 #' @param dgeObj A DGEobj that contains topTable objects (required)
 #' @param plotType Plot type must be canvasXpress or ggplot (default to canvasXpress).
-#' @param facetColname Define the column name to separate plots from geneData (default = "rgd_symbol").
-#' @param xColname Define name for the computed column to group boxplots by (Required) (default = "Contrast").
-#' @param yColname Define the column name for the output of the boxplots (default = "logFC")
-#' @param CI.R_colname Define name of the CI high value (default = "CI.R")
-#' @param CI.L_colname Define name of the CI low value (default =  "CI.L")
+#' @param facetColname Column name to separate plots from geneData (default = "rgd_symbol").
+#' @param xColname The computed column to group boxplots by (required) (default = "Contrast").
+#' @param yColname Column name for the output of the boxplots (default = "logFC")
+#' @param CI.R_colname Name of the CI high value (default = "CI.R")
+#' @param CI.L_colname Name of the CI low value (default =  "CI.L")
 #' @param plotCategory One of "bar" or "point" (default = "bar")
 #' @param refLine Adds a horizontal line at y = 0 (default = TRUE)
 #' @param xlab X axis label (defaults to xColname)
 #' @param ylab Y axis label (defaults to yColname)
-#' @param title Plot title, set to NULL to disable (Optional, default is NULL)
+#' @param title Plot title, set to NULL to disable (Optional, default = NULL)
 #' @param facet Specifies whether to facet (TRUE) or print individual plots
 #'   (FALSE)  (default = TRUE)
-#' @param labelAngle Angle to set the sample labels on the X axis (default =  45; Range = 0-90)
-#' @param axisFree Specify same scale or independent scales for each subplot (default = TRUE;
-#'   Allowed values: TRUE and FALSE)
+#' @param labelAngle Angle (0-90) to set the sample labels on the X axis (default =  45)
+#' @param axisFree Specify same scale or independent scales for each subplot (default = TRUE)
 #'
 #' @return canvasXpress (the default) or a ggplot object:
 #' #' \itemize{
@@ -40,8 +39,8 @@
 #' @examples
 #' \dontrun{
 #'   # DGEobj example, subset DGEobj
+#'   t_obj1 <- readRDS(system.file("exampleObj.RDS", package = "DGEobj", mustWork = TRUE))
 #'   t_obj1_subset <- subset(t_obj1, row = c(1:6))
-#'
 #'
 #'   # Simple barplot
 #'  logRatioPlot(t_obj1_subset,
@@ -55,7 +54,7 @@
 #'               xColname = "Contrast",
 #'               axisFree = FALSE,
 #'               facet = TRUE,
-#'               title = "Test"
+#'               title = "Test",
 #'               labelAngle = 60)
 #' }
 #'
@@ -303,7 +302,7 @@ logRatioPlot <- function(dgeObj,
 
         cx_params <- list(groupingFactors         = xColname,
                           graphOrientation        = "vertical",
-                          colors                  = "dodgerblue4",
+                          colorScheme             = "Dark2",
                           graphType               = graphType,
                           smpTitle                = xlab,
                           smpLableFontStyle       = "bold",
