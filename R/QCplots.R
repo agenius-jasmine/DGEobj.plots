@@ -6,25 +6,24 @@
 #'
 #' Returns a list of QC plots for the metricNames provided as input.
 #'
-#' By default, horizontal reference lines are drawn  at the median and +/- n SDs based on the
+#' By default, horizontal reference lines are drawn at the median and +/- n SDs based on the
 #' hlineSD argument. These are statistical reference points, NOT pass/fail limits.
 #'
-#' @param DGEdata DGEobj(Required)
+#' @param DGEdata A DGEobj object with an item of type "alignQC" (required)
 #' @param metricNames A list of metrics to plot. Values must exist in column names of the item
-#' of type AlignQC. (Required)
+#' of type AlignQC. (required)
 #' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
-#' @param plotCategory One of "bar", "point", "pointline" or "histogram".  For a different
+#' @param plotCategory One of "bar", "point", "pointline" or "histogram". For a different
 #'   plot type for each metric, pass a list of plotCategories with length equal to
 #'   length(metricNames). (default = "bar")
-#' @param labelAngle Angle to set the sample labels on the X axis (default = 30;
-#'   Range = 0 - 90)
-#' @param hlineSD Draw two reference lines 1) at the median value 2) the number of
-#'   SDs defined by the value of hlineSD. (default = 3; 0 to disable the reference lines.)
+#' @param labelAngle Angle (0 - 90) to set the sample labels on the X axis (default = 30)
+#' @param hlineSD Draw two reference lines: 1) at the median value 2) the number of
+#'   SDs defined by the value of hlineSD. (default = 3). Set to 0 to disable the reference lines.
 #' @param winsorize This implements a robust method to calculate standard
 #'   deviations.  It is used to calculate the standard deviation for the
 #'   placement of horizontal reference lines (hlineSD argument).  The adaptive
 #'   winsorization used here only trims extreme values when normality is
-#'   violated. see https://www.r-bloggers.com/winsorization/ for details.
+#'   violated. See https://www.r-bloggers.com/winsorization/ for details.
 #'   (default = TRUE).
 #'
 #' @return canvasXpress or ggplot object if one plot is specified.
@@ -160,9 +159,6 @@ QCplots <- function(DGEdata,
         metricSD     <- sd(as.numeric(thisMetric[-1]), na.rm = TRUE)
         SD           <- metricSD * hlineSD
 
-        #aesthetics
-        color = "dodgerblue3"
-
         if (plotType == "canvasxpress") {
             cx.data <- qcdata %>%
                 dplyr::select(Sample, !!rlang::sym(metric)) %>%
@@ -225,7 +221,7 @@ QCplots <- function(DGEdata,
                               decorations      = decorations,
                               xAxisTitle       = metric,
                               smpLabelRotate   = labelAngle,
-                              colors           = color,
+                              colorScheme      = "Dark2",
                               showLegend       = FALSE)
 
             if (plot_metric == "bar") {
@@ -244,7 +240,6 @@ QCplots <- function(DGEdata,
                 cx.params <- c(cx.params, list( graphType = "Dotplot",
                                                 smpAnnot  = smp.data,
                                                 connectBy = "metric",
-                                                connecyByColor = color,
                                                 setMinX   = min.val,
                                                 setMaxX   = max.val))
             } else if (plot_metric == "histogram") {
@@ -252,7 +247,7 @@ QCplots <- function(DGEdata,
                     dplyr::select(!!rlang::sym(metric))
                 cx.params <- list(data                     = cx.data,
                                   graphType                = "Scatter2D",
-                                  colors                   = color,
+                                  colorScheme              = "Dark2",
                                   # decoration will be disabled until related cx plot is resolved
                                   #decorations              = decorations,
                                   showLegend               = FALSE,
