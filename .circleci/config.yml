@@ -27,8 +27,6 @@ jobs:
             R -e 'install.packages("BiocManager")'
             R -e 'BiocManager::install(c("limma", "edgeR"))'
             R -e 'install.packages("covr")'
-            R -e 'install.packages("devtools")'
-            R -e 'devtools::install_github("cb4ds/DGEobj.utils@cran")'
             R -e 'install.packages("remotes")'
             R -e 'remotes::install_deps(dependencies = TRUE)'
       - run:
@@ -74,8 +72,6 @@ jobs:
             R -e 'install.packages("BiocManager")'
             R -e 'BiocManager::install(c("limma", "edgeR"))'
             R -e 'install.packages("covr")'
-            R -e 'install.packages("devtools")'
-            R -e 'devtools::install_github("cb4ds/DGEobj.utils@cran")'
             R -e 'install.packages("remotes")'
             R -e 'remotes::install_deps(dependencies = TRUE)'
       - run:
