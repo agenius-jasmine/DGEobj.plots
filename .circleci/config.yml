@@ -25,7 +25,7 @@ jobs:
           name: Install R dependencies
           command: |
             R -e 'install.packages("BiocManager")'
-            R -e 'BiocManager::install(c("limma", "edgeR", "qvalue", "sva", "GenomicRanges"))'
+            R -e 'BiocManager::install(c("limma", "edgeR", "qvalue", "sva", "GenomicRanges", "zFPKM", "RNASeqPower", "IHW"))'
             R -e 'install.packages("covr")'
             R -e 'install.packages("remotes")'
             R -e 'remotes::install_deps(dependencies = TRUE)'
