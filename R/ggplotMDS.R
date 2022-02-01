@@ -527,10 +527,10 @@ MDS_var_explained <- function(mds,
 
     mds.distances <- tryCatch(
         expr = {
-            mds %$% distance.matrix %>% as.dist
+            as.dist(mds$distance.matrix)
         },
         error = function(e) {
-            mds %$% distance.matrix.squared %>% as.dist
+            as.dist(mds$distance.matrix.squared)
         }
     )
 
