@@ -7,8 +7,8 @@
 #'
 #' @param dgeObj DGEobj which has a counts matrix or a DGElist
 #' @param replicateGroupCol A singular value of class character and must be a column name in design object (default = "ReplicateGroup")
-#' @param countsMatrix If TRUE, uses the countsMatrix in DGEobj to construct the plot else DGElist will be used. (default = TRUE)
-#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
+#' @param countsMatrix If TRUE, uses the countsMatrix in DGEobj to construct the plot else DGElist will be used (default = TRUE)
+#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress)
 #' @param plotCategory One of "dispersion" or "BCV" (default = "dispersion")
 #' @param lineFit If the plotType is ggplot, any method supported by `geom_smooth()`. If the plotType is canvasXpress, one of glm, lm, loess, gam is accepted .
 #' Loess is recommended. (default = NULL)

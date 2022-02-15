@@ -23,8 +23,8 @@
 #' @param labels A column name in the design table. Text labels for the samples. These should be short
 #'   abbreviations of the sample identifiers.
 #'   Default = ReplicateGroup or rownames of dgeObj. Set to NULL to disable
-#'   text labels.
-#' @param title A title for the plot. (Optional)
+#'   text labels
+#' @param title A title for the plot (Optional)
 #' @param xlab x axis label (Optional)
 #' @param ylab y axis label (Optional)
 #' @param vlineIntercept X intercept of vertical line (Optional)

@@ -10,7 +10,7 @@
 #'
 #' @param dgeObj DGEobj with a counts Matrix
 #' @param plotType Plot type must be canvasXpress or ggplot (defaults to canvasXpress).
-#' @param plotCategory Show a "box" or "density" plot (default = "box")
+#' @param plotCategory Show a "box" or "density" plot (default = "box").
 #' @param normalize The type of normalization to use (default = "TMM"). Other allowed
 #'   values are: "RLE", "upperquartile" and "none". Invokes edgeR::calcNormFactors for
 #'   normalization.

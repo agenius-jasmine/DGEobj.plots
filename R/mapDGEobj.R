@@ -3,12 +3,12 @@
 #' Reads a DGEobj and visualizes parent/child relationships between
 #' data items in a DGEobj.
 #'
-#' @param dgeObj DGEobj to find the parent/child relationships between data items.
-#' @param plotType Must be canvasXpress or ggplot (default = canvasXpress).
+#' @param dgeObj DGEobj to find the parent/child relationships between data items
+#' @param plotType Must be canvasXpress or ggplot (default = canvasXpress)
 #' @param directed Only applies to ggplot. Indicates if the graph should
-#'     be directed or not. (default = TRUE)
+#'     be directed or not (default = TRUE)
 #'
-#' @return A class ggplot object or a canvasXpress network plot.
+#' @return A class ggplot object or a canvasXpress network plot
 #'
 #'
 #' @examples

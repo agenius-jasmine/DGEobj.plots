@@ -14,7 +14,7 @@
 #'
 #' @param dgeObj A DGEobj with one or more topTables
 #' @param contrast Name of a topTable dataframe with p-value or an FDR column
-#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress).
+#' @param plotType Plot type must be canvasXpress or ggplot (default = canvasXpress)
 #' @param pvalCol Name of the p-value or FDR column (default = "P.Value")
 #' @param pvalMax Limit the range of the main plot (default = 0.10)
 #' @param pThreshold Significant value threshold (default = 0.01)
