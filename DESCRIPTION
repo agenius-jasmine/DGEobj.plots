@@ -31,7 +31,6 @@ Imports:
     magrittr,
     rlang,
     stats,
-    statmod,
     stringr,
     tidyr,
     utils
