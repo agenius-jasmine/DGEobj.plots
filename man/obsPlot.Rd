@@ -29,21 +29,21 @@ obsPlot(
 
 \item{plotType}{Can be canvasXpress or ggplot (default = canvasXpress)}
 
-\item{countsMatrix}{Name of the counts matrix in the DGEObj which will be used to render the plot.(default = counts)}
+\item{countsMatrix}{Name of the counts matrix in the DGEObj which will be used to render the plot (default = counts)}
 
 \item{convertCounts}{A flag to indicate if counts matrix need to be converted or taken as is. Default value is NULL. This indicates
-countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM,FPKM, FPK and TPM.
+countsMatrix need to be taken as is. To convert the counts matrix, specify the desired unit. Supported units include CPM, FPKM, FPK and TPM.
 This parameter is passed to DGEobj.utils::convertCounts (default = NULL)}
 
-\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts. (optional).}
+\item{convert_geneLength}{Parameter to pass to DGEobj.utils::convertCounts (optional)}
 
-\item{convert_log}{Parameter to pass to DGEobj.utils::convertCounts. (default = FALSE)}
+\item{convert_log}{Parameter to pass to DGEobj.utils::convertCounts (default = FALSE)}
 
-\item{convert_normalize}{Parameter to pass to DGEobj.utils::convertCounts. (default = none)}
+\item{convert_normalize}{Parameter to pass to DGEobj.utils::convertCounts (default = none)}
 
-\item{convert_prior.count}{Parameter to pass to DGEobj.utils::convertCounts. (default = NULL)}
+\item{convert_prior.count}{Parameter to pass to DGEobj.utils::convertCounts (default = NULL)}
 
-\item{designTable}{Name of the design table in the DGEObj from which the grouping column will be extracted. (default = design)}
+\item{designTable}{Name of the design table in the DGEObj from which the grouping column will be extracted (default = design)}
 
 \item{group}{Define the column name to group boxplots by (typically a replicate group column) (required)}
 
@@ -57,8 +57,8 @@ This parameter is passed to DGEobj.utils::convertCounts (default = NULL)}
 
 \item{title}{Plot title (optional)}
 
-\item{facet}{Specifies whether to facet (TRUE) or print individual plots
-(FALSE)  (default = TRUE). It is recommended to facet no more than 40 plots. If 40 of more plots are needed, please set this argument to FALSE}
+\item{facet}{Specifies whether to facet (TRUE, default) or print individual plots
+(FALSE). It is recommended to facet no more than 40 plots. If 40 of more plots are needed, please set this argument to FALSE}
 
 \item{axisFree}{Specify same scale or independent scales for each subplot (default = TRUE;
 Allowed values: TRUE or FALSE)}

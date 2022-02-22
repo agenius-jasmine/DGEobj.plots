@@ -26,7 +26,7 @@ cdfPlot(
 
 \item{contrast}{Name of a topTable dataframe with p-value or an FDR column}
 
-\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress).}
+\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress)}
 
 \item{pvalCol}{Name of the p-value or FDR column (default = "P.Value")}
 

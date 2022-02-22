@@ -16,7 +16,7 @@ plotNorm(
 
 \item{plotType}{Plot type must be canvasXpress or ggplot (defaults to canvasXpress).}
 
-\item{plotCategory}{Show a "box" or "density" plot (default = "box")}
+\item{plotCategory}{Show a "box" or "density" plot (default = "box").}
 
 \item{normalize}{The type of normalization to use (default = "TMM"). Other allowed
 values are: "RLE", "upperquartile" and "none". Invokes edgeR::calcNormFactors for

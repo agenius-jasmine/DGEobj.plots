@@ -7,15 +7,15 @@
 mapDGEobj(dgeObj, plotType = "canvasXpress", directed = TRUE)
 }
 \arguments{
-\item{dgeObj}{DGEobj to find the parent/child relationships between data items.}
+\item{dgeObj}{DGEobj to find the parent/child relationships between data items}
 
-\item{plotType}{Must be canvasXpress or ggplot (default = canvasXpress).}
+\item{plotType}{Must be canvasXpress or ggplot (default = canvasXpress)}
 
 \item{directed}{Only applies to ggplot. Indicates if the graph should
-be directed or not. (default = TRUE)}
+be directed or not (default = TRUE)}
 }
 \value{
-A class ggplot object or a canvasXpress network plot.
+A class ggplot object or a canvasXpress network plot
 }
 \description{
 Reads a DGEobj and visualizes parent/child relationships between

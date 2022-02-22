@@ -25,11 +25,11 @@ logRatioPlot(
 \arguments{
 \item{dgeObj}{A DGEobj that contains topTable objects}
 
-\item{plotType}{Plot type must be canvasXpress or ggplot (default to canvasXpress).}
+\item{plotType}{Plot type must be canvasXpress or ggplot (default to canvasXpress)}
 
-\item{facetColname}{Column name to separate plots from geneData (default = "rgd_symbol").}
+\item{facetColname}{Column name to separate plots from geneData (default = "rgd_symbol")}
 
-\item{xColname}{The computed column to group boxplots by (default = "Contrast").}
+\item{xColname}{The computed column to group boxplots by (default = "Contrast")}
 
 \item{yColname}{Column name for the output of the boxplots (default = "logFC")}
 

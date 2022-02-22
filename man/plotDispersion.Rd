@@ -17,11 +17,11 @@ plotDispersion(
 \arguments{
 \item{dgeObj}{DGEobj which has a counts matrix or a DGElist}
 
-\item{countsMatrix}{If TRUE, uses the countsMatrix in DGEobj to construct the plot else DGElist will be used. (default = TRUE)}
+\item{countsMatrix}{If TRUE, uses the countsMatrix in DGEobj to construct the plot else DGElist will be used (default = TRUE)}
 
 \item{replicateGroupCol}{A singular value of class character and must be a column name in design object (default = "ReplicateGroup")}
 
-\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress).}
+\item{plotType}{Plot type must be canvasXpress or ggplot (default = canvasXpress)}
 
 \item{plotCategory}{One of "dispersion" or "BCV" (default = "dispersion")}
 

@@ -38,9 +38,9 @@ ggplotMDS(
 \item{labels}{A column name in the design table. Text labels for the samples. These should be short
 abbreviations of the sample identifiers.
 Default = ReplicateGroup or rownames of dgeObj. Set to NULL to disable
-text labels.}
+text labels}
 
-\item{title}{A title for the plot. (Optional)}
+\item{title}{A title for the plot (Optional)}
 
 \item{xlab}{x axis label (Optional)}
 
